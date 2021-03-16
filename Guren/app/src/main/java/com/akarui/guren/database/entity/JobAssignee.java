@@ -10,18 +10,23 @@ import lombok.Data;
 
 @Entity(
         tableName = "job_assignee",
+        primaryKeys = {
+                "job_id",
+                "user_id"
+        },
         foreignKeys = {
                 @ForeignKey(entity = Job.class, parentColumns = "id", childColumns = "job_id", onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE),
-                @ForeignKey(entity = User.class, parentColumns = {"id", "assigner_id"}, childColumns = {"user_id", "user_id"}, onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE),
+                @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id", onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE),
+                @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "assigner_id", onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE),
         }
 )
 @Data
 public class JobAssignee {
-    @ColumnInfo(name = "job_id")
+    @ColumnInfo(name = "job_id", index = true)
     private int jobId;
-    @ColumnInfo(name = "user_id")
+    @ColumnInfo(name = "user_id", index = true)
     private int userId;
-    @ColumnInfo(name = "assigner_id")
+    @ColumnInfo(name = "assigner_id", index = true)
     private int assignerId;
     @ColumnInfo(name = "created_date")
     private LocalDateTime createdDate;

@@ -13,6 +13,7 @@ import lombok.Data;
 public class Group {
     @PrimaryKey(autoGenerate = true)
     private int id;
+    private String name;
     @ColumnInfo(name = "creator_id")
     private int creatorId;
     @ColumnInfo(name = "created_date")

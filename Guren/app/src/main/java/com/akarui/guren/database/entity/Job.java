@@ -13,8 +13,12 @@ import lombok.Data;
 public class Job {
     @PrimaryKey(autoGenerate = true)
     private int id;
+    @ColumnInfo(name = "group_id")
     private int groupId;
+    private String title;
+    private String detail;
     private LocalDateTime deadline;
+    private int priority;
     @ColumnInfo(name = "created_date")
     private LocalDateTime createdDate;
     @ColumnInfo(name = "is_deleted")
