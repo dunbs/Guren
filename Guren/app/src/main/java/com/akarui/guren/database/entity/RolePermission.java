@@ -9,6 +9,10 @@ import lombok.Data;
 
 @Entity(
         tableName = "role_permission",
+        primaryKeys = {
+                "role_id",
+                "permission_id"
+        },
         foreignKeys = {
                 @ForeignKey(entity = Role.class, parentColumns = "id", childColumns = "role_id", onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE),
                 @ForeignKey(entity = Permission.class, parentColumns = "id", childColumns = "permission_id", onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE),
@@ -16,10 +20,8 @@ import lombok.Data;
 )
 @Data
 public class RolePermission {
-    @PrimaryKey
     @ColumnInfo(name = "role_id")
     private int roleId;
-    @PrimaryKey
-    @ColumnInfo(name = "permission_id")
+    @ColumnInfo(name = "permission_id", index = true)
     private int permissionId;
 }
