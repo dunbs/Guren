@@ -15,12 +15,12 @@ import java.util.List;
 @Dao
 public interface GroupMemberDAO extends BaseDAO<GroupMember> {
     
-    @Query("SELECT * FROM user u " +
+    @Query("SELECT u.* FROM user u " +
             "JOIN group_member gm ON gm.user_id = u.id " +
-            "WHERE gm.group_id = group_id")
+            "WHERE gm.group_id = :groupId")
     List<User> loadGroupMembers(int groupId);
     
-    @Query("SELECT * FROM `group` g " +
+    @Query("SELECT g.* FROM `group` g " +
             "JOIN group_member gm ON gm.group_id = g.id " +
             "WHERE gm.user_id = :userId")
     List<Group> loadUserGroups(int userId);
@@ -30,7 +30,7 @@ public interface GroupMemberDAO extends BaseDAO<GroupMember> {
             "WHERE name LIKE :groupName AND gm.user_id = :userId")
     List<Group> findGroupsOfUserByName(String groupName, int userId);
     
-    @Query("SELECT * FROM user u " +
+    @Query("SELECT u.* FROM user u " +
             "JOIN group_member gm ON gm.user_id = u.id " +
             "WHERE gm.group_id = :groupId AND gm.role_id = :roleId")
     List<User> findMemberOfGroupByRole(int groupId, int roleId);
