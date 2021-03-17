@@ -1,27 +1,28 @@
 package com.akarui.guren.database.dao;
 
+import androidx.room.Dao;
 import androidx.room.Query;
 
 import com.akarui.guren.database.entity.Job;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
+@Dao
 public interface JobDAO extends BaseDAO<Job> {
 
-    @Query("SELECT * FROM job j " +
+    @Query("SELECT j.* FROM job j " +
             "JOIN `group` g ON g.id = j.group_id " +
             "JOIN group_member gm ON gm.group_id = g.id " +
             "WHERE gm.user_id = :userId")
     List<Job> findJobsByUser(int userId);
     
-    @Query("SELECT * FROM job j " +
+    @Query("SELECT j.* FROM job j " +
             "JOIN `group` g ON g.id = j.group_id " +
             "JOIN group_member gm ON gm.group_id = g.id " +
             "WHERE gm.user_id = :userId AND j.title LIKE :titleSearchString")
     List<Job> findJobsByUserAndTitle(int userId, String titleSearchString);
     
-    @Query("SELECT * FROM job j " +
+    @Query("SELECT j.* FROM job j " +
             "JOIN `group` g ON g.id = j.group_id " +
             "JOIN group_member gm ON gm.group_id = g.id " +
             "WHERE gm.user_id = :userId AND j.priority IN (:priorities)")

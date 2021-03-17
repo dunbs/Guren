@@ -17,6 +17,8 @@ public class Job {
     private int groupId;
     private String title;
     private String detail;
+    @ColumnInfo(name = "creator_id")
+    private int creatorId;
     private LocalDateTime deadline;
     private int priority;
     @ColumnInfo(name = "created_date")
