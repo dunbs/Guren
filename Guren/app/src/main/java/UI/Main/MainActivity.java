@@ -1,4 +1,4 @@
-package UI;
+package UI.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
