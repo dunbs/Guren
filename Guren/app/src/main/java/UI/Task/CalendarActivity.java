@@ -24,7 +24,7 @@ public class CalendarActivity extends AppCompatActivity {
 
     private void addTaskList() {
         FloatingActionButton addTaskBtn;
-        addTaskBtn = (FloatingActionButton) findViewById(R.id.fab);
+        addTaskBtn = (FloatingActionButton) findViewById(R.id.fab_calendar);
 
         addTaskBtn.setOnClickListener(new View.OnClickListener() {
             @Override
