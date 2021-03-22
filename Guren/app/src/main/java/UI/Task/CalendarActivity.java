@@ -29,7 +29,7 @@ public class CalendarActivity extends AppCompatActivity {
         addTaskBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CalendarActivity.this, TaskListActivity.class));
+                startActivity(new Intent(CalendarActivity.this, AddTask.class));
             }
         });
     }
