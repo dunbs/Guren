@@ -8,6 +8,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Guren" />
+        android:theme="@style/Theme.Guren">
+        <activity android:name="UI.Task.AddTask"></activity>
+        <activity android:name="UI.Task.TaskListActivity" />
+        <activity android:name="UI.Main.MainActivity" />
+        <activity android:name="UI.Task.CalendarActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>
