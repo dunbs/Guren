@@ -10,16 +10,16 @@ import java.time.ZoneOffset;
 
 public class Converter {
     @TypeConverter
-    public Long ToTimeStamp(LocalDateTime localDateTime){
+    public static Long ToTimeStamp(LocalDateTime localDateTime){
         if (localDateTime == null){
             localDateTime = LocalDateTime.now();
         }
 
-        return localDateTime.atZone(ZoneId.systemDefault()).toEpochSecond();
+        return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
-
+    
     @TypeConverter
-    public LocalDateTime ToLocalDateTime(Long timestamp){
+    public static LocalDateTime ToLocalDateTime(Long timestamp){
         return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
     }
 }
