@@ -10,6 +10,9 @@ import java.util.List;
 @Dao
 public interface JobDAO extends BaseDAO<Job> {
 
+    @Query("SELECT * FROM job WHERE id = :jobId")
+    Job findJobById(int jobId);
+    
     @Query("SELECT j.* FROM job j " +
             "JOIN `group` g ON g.id = j.group_id " +
             "JOIN group_member gm ON gm.group_id = g.id " +

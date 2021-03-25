@@ -13,6 +13,12 @@ android {
         versionCode 1
         versionName "1.0"
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":"$projectDir/schemas".toString()]
+            }
+        }
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -60,4 +66,12 @@ dependencies {
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
     //===============End Room
+
+    //===============Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //===============End Chart
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
 }
