@@ -13,9 +13,10 @@
         <activity android:name="UI.Task.TaskListActivity" />
         <activity android:name="UI.Main.MainActivity" />
         <activity android:name="UI.Task.CalendarActivity">
+        </activity>
+        <activity android:name="UI.Finance.FinanceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

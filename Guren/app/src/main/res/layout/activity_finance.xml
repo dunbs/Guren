@@ -102,6 +102,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center_vertical"
+                            android:paddingLeft="5dp"
 
                             android:text="1.000.000VND"
                             android:textSize="20dp"
@@ -115,6 +116,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center_vertical"
+                            android:paddingLeft="5dp"
 
                             android:text="Income"
                             android:textSize="20dp"
@@ -136,6 +138,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center_vertical"
+                            android:paddingLeft="5dp"
 
                             android:text="1.000.000VND"
                             android:textSize="20dp"
@@ -149,6 +152,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center_vertical"
+                            android:paddingLeft="5dp"
 
                             android:text="Outcome"
                             android:textSize="20dp"
@@ -182,7 +186,6 @@
             app:layout_constraintTop_toBottomOf="@+id/finance_chart"
             app:layout_constraintStart_toStartOf="parent"
         >
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

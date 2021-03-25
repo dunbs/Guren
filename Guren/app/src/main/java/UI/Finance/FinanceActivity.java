@@ -1,6 +1,7 @@
 package UI.Finance;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 
@@ -17,5 +18,10 @@ public class FinanceActivity extends AppCompatActivity {
     }
 
     private void insertTransactionData() {
+        ConstraintLayout transactionList;
+
+        transactionList = findViewById(R.id.finance_transaction_list);
+
+
     }
 }
