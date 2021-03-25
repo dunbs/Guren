@@ -13,6 +13,14 @@ import lombok.Data;
 public class Group {
     @PrimaryKey(autoGenerate = true)
     private int id;
+    private String name;
+    private float fund;
+    /**
+     * true: sử dụng cho 1 user (creator = member)
+     * false: sử dụng cho nhiều user
+     */
+    @ColumnInfo(name = "is_single_user")
+    private boolean isSingleUser;
     @ColumnInfo(name = "creator_id")
     private int creatorId;
     @ColumnInfo(name = "created_date")
