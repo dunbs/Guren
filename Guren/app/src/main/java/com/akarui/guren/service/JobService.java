@@ -41,9 +41,6 @@ public class JobService extends JobIntentService {
     
         notificationBuilder.notify();
         
-        long dayInDifferent = job.getDeadline().until(LocalDateTime.now(), ChronoUnit.DAYS);
-        if (dayInDifferent > 0){
-            JobHandler.createJobNotification(job, this, Duration.ofDays(dayInDifferent - 1));
-        }
+        JobHandler.createJobNotification(job, this);
     }
 }
