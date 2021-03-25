@@ -19,6 +19,7 @@ public class Job {
     private String detail;
     @ColumnInfo(name = "creator_id")
     private int creatorId;
+    private int state; // Assigned / Doing / Pending / Done
     private LocalDateTime deadline;
     private int priority;
     @ColumnInfo(name = "created_date")
