@@ -1,13 +1,10 @@
-package UI.Task;
+package com.akarui.guren.UI.Task;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-
-import UI.Task.TaskListActivity;
 
 import com.akarui.guren.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
