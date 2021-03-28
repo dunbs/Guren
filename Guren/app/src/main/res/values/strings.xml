@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Guren</string>
+    <string name="notification_channel">Guren Deadline Notification</string>
+    <string name="notification_channel_description">Deadline is near!</string>
 </resources>
