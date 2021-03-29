@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+
 import com.akarui.guren.R;
+import com.akarui.guren.database.GurenDatabase;
 import com.akarui.guren.database.entity.Transaction;
 import com.akarui.guren.utils.generateViews.GenerateFinanceView;
+import com.akarui.guren.database.dao.TransactionDAO;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -51,19 +54,19 @@ public class FinanceActivity extends AppCompatActivity {
 
         financeChart.setData(barData);
         financeChart.invalidate();
-
     }
 
 
 
     private void insertTransactionData() {
+        System.out.println("Do things pls");
         GenerateFinanceView generateFinanceView = new GenerateFinanceView();
+        List<Transaction> transactionList = GurenDatabase.getInstance(this).transactionDAO().loadTransactionsByGroupId(1);
 
         ConstraintLayout transactionLayout = findViewById(R.id.finance_transaction_list);
-        ConstraintLayout cardLayout;
 
         ConstraintSet transactionLayoutSet = new ConstraintSet();
-        cardLayout = generateFinanceView.generateTransactionCard(this, "Sample Title", "Sample Author", "$199");
+        ConstraintLayout cardLayout = generateFinanceView.generateTransactionCard(this, "Sample Title", "Sample Author", "$199");
         cardLayout.setId(cardLayout.generateViewId());
         transactionLayout.addView(cardLayout);
 
@@ -72,10 +75,14 @@ public class FinanceActivity extends AppCompatActivity {
         transactionLayoutSet.connect(cardLayout.getId(), ConstraintSet.START, transactionLayout.getId(), ConstraintSet.START, 2);
         transactionLayoutSet.applyTo(transactionLayout);
 
-        for(int i = 0; i < 10; ++i) {
-            String transactionTitle = "Title " + (i+1);
-            String transactionAuthor = "Author " + (i+1);
-            String transactionAmount = "$" + Math.ceil(Math.random()*1000);
+        System.out.println("Transaction List Length: " + transactionList.size());
+
+
+
+        for(Transaction tran : transactionList) {
+            String transactionTitle = tran.getReason();
+            String transactionAuthor = "Author 1";
+            String transactionAmount = "$" + tran.getAmount();
 
             int prevId = cardLayout.getId();
             int currentId = cardLayout.generateViewId();
