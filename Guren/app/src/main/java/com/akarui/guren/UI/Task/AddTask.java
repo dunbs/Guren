@@ -1,4 +1,4 @@
-package UI.Main;
+package com.akarui.guren.UI.Task;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.akarui.guren.R;
 
-public class MainActivity extends AppCompatActivity {
+public class AddTask extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_task);
     }
 }

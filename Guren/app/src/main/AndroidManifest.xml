@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Guren">
-        <activity android:name="UI.Task.AddTask"></activity>
-        <activity android:name="UI.Task.TaskListActivity" />
-        <activity android:name="UI.Main.MainActivity" />
-        <activity android:name="UI.Task.CalendarActivity">
+        <activity android:name="com.akarui.guren.UI.Task.AddTask"></activity>
+        <activity android:name="com.akarui.guren.UI.Task.TaskListActivity" />
+        <activity android:name="com.akarui.guren.UI.Main.MainActivity" />
+        <activity android:name="com.akarui.guren.UI.Task.CalendarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
