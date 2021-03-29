@@ -11,6 +11,10 @@ import lombok.Data;
 
 @Entity(
         tableName = "group_member",
+        primaryKeys = {
+                "user_id",
+                "group_id"
+        },
         foreignKeys = {
                 @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id", onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE),
                 @ForeignKey(entity = Group.class, parentColumns = "id", childColumns = "group_id", onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE),
@@ -18,13 +22,11 @@ import lombok.Data;
         })
 @Data
 public class GroupMember {
-    @PrimaryKey
-    @ColumnInfo(name = "user_id")
+    @ColumnInfo(name = "user_id", index = true)
     private int userId;
-    @PrimaryKey
-    @ColumnInfo(name = "group_id")
+    @ColumnInfo(name = "group_id", index = true)
     private int groupId;
-    @ColumnInfo(name = "role_id")
+    @ColumnInfo(name = "role_id", index = true)
     private int roleId;
     @ColumnInfo(name = "joined_date")
     private LocalDateTime joinedDate;
