@@ -66,13 +66,13 @@ public class FinanceActivity extends AppCompatActivity {
         ConstraintLayout transactionLayout = findViewById(R.id.finance_transaction_list);
 
         ConstraintSet transactionLayoutSet = new ConstraintSet();
-        ConstraintLayout cardLayout = generateFinanceView.generateTransactionCard(this, "Sample Title", "Sample Author", "$199");
-        cardLayout.setId(cardLayout.generateViewId());
-        transactionLayout.addView(cardLayout);
+        CardView transactionCard = generateFinanceView.generateTransactionCard(this, "Sample Title", "Sample Author", "$199");
+        transactionCard.setId(transactionCard.generateViewId());
+        transactionLayout.addView(transactionCard);
 
         transactionLayoutSet.clone(transactionLayout);
-        transactionLayoutSet.connect(cardLayout.getId(), ConstraintSet.TOP, transactionLayout.getId(), ConstraintSet.TOP, 3);
-        transactionLayoutSet.connect(cardLayout.getId(), ConstraintSet.START, transactionLayout.getId(), ConstraintSet.START, 2);
+        transactionLayoutSet.connect(transactionCard.getId(), ConstraintSet.TOP, transactionLayout.getId(), ConstraintSet.TOP, 3);
+        transactionLayoutSet.connect(transactionCard.getId(), ConstraintSet.START, transactionLayout.getId(), ConstraintSet.START, 2);
         transactionLayoutSet.applyTo(transactionLayout);
 
         System.out.println("Transaction List Length: " + transactionList.size());
@@ -80,16 +80,16 @@ public class FinanceActivity extends AppCompatActivity {
 
 
         for(Transaction tran : transactionList) {
-            String transactionTitle = tran.getReason();
-            String transactionAuthor = "Author 1";
-            String transactionAmount = "$" + tran.getAmount();
+            String transactionTitle = "Title: " + tran.getReason();
+            String transactionAuthor = "Author: " + tran.getGroupId();
+            String transactionAmount = "Amount: $" + tran.getAmount();
 
-            int prevId = cardLayout.getId();
-            int currentId = cardLayout.generateViewId();
+            int prevId = transactionCard.getId();
+            int currentId = transactionCard.generateViewId();
 
-            cardLayout = generateFinanceView.generateTransactionCard(this, transactionTitle, transactionAuthor, transactionAmount);
-            cardLayout.setId(currentId);
-            transactionLayout.addView(cardLayout);
+            transactionCard = generateFinanceView.generateTransactionCard(this, transactionTitle, transactionAuthor, transactionAmount);
+            transactionCard.setId(currentId);
+            transactionLayout.addView(transactionCard);
 
             transactionLayoutSet.clone(transactionLayout);
             transactionLayoutSet.connect(currentId, ConstraintSet.TOP, prevId, ConstraintSet.BOTTOM, 30);

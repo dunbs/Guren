@@ -1,6 +1,7 @@
 package com.akarui.guren.utils.generateViews;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -10,13 +11,23 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
 public class GenerateFinanceView {
-    public ConstraintLayout generateTransactionCard(Context context, String transactionTitleValue, String transactionAuthorValue, String transactionAmountValue) {
+    public CardView generateTransactionCard(Context context, String transactionTitleValue, String transactionAuthorValue, String transactionAmountValue) {
+
+        CardView card = new CardView(context);
+        card.setLayoutParams(new ConstraintLayout.LayoutParams(
+                ConstraintLayout.LayoutParams.MATCH_PARENT,
+                ConstraintLayout.LayoutParams.WRAP_CONTENT
+        ));
+        card.setContentPadding(20, 20, 20, 20);
+        card.setRadius(20);
+        card.setCardBackgroundColor(Color.parseColor("#33FFF1"));
 
         ConstraintLayout cardLayout = new ConstraintLayout(context);
         cardLayout.setLayoutParams(new ConstraintLayout.LayoutParams(
                 ConstraintLayout.LayoutParams.MATCH_PARENT,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT
         ));
+
 
         ConstraintSet cardLayoutSet = new ConstraintSet();
 
@@ -54,6 +65,8 @@ public class GenerateFinanceView {
 
         cardLayoutSet.applyTo(cardLayout);
 
-        return cardLayout;
+        card.addView(cardLayout);
+
+        return card;
     }
 }
