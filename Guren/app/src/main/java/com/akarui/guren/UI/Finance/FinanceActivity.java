@@ -58,10 +58,39 @@ public class FinanceActivity extends AppCompatActivity {
 
     private void insertTransactionData() {
         GenerateFinanceView generateFinanceView = new GenerateFinanceView();
-        ConstraintLayout transactionLayout = findViewById(R.id.finance_transaction_list);
-        ConstraintLayout cardLayout = generateFinanceView.generateTransactionCard(this, "Sample Title", "Sample Author", "$199");
 
+        ConstraintLayout transactionLayout = findViewById(R.id.finance_transaction_list);
+        ConstraintLayout cardLayout;
+
+        ConstraintSet transactionLayoutSet = new ConstraintSet();
+        cardLayout = generateFinanceView.generateTransactionCard(this, "Sample Title", "Sample Author", "$199");
+        cardLayout.setId(cardLayout.generateViewId());
         transactionLayout.addView(cardLayout);
+
+        transactionLayoutSet.clone(transactionLayout);
+        transactionLayoutSet.connect(cardLayout.getId(), ConstraintSet.TOP, transactionLayout.getId(), ConstraintSet.TOP, 3);
+        transactionLayoutSet.connect(cardLayout.getId(), ConstraintSet.START, transactionLayout.getId(), ConstraintSet.START, 2);
+        transactionLayoutSet.applyTo(transactionLayout);
+
+        for(int i = 0; i < 10; ++i) {
+            String transactionTitle = "Title " + (i+1);
+            String transactionAuthor = "Author " + (i+1);
+            String transactionAmount = "$" + Math.ceil(Math.random()*1000);
+
+            int prevId = cardLayout.getId();
+            int currentId = cardLayout.generateViewId();
+
+            cardLayout = generateFinanceView.generateTransactionCard(this, transactionTitle, transactionAuthor, transactionAmount);
+            cardLayout.setId(currentId);
+            transactionLayout.addView(cardLayout);
+
+            transactionLayoutSet.clone(transactionLayout);
+            transactionLayoutSet.connect(currentId, ConstraintSet.TOP, prevId, ConstraintSet.BOTTOM, 30);
+            transactionLayoutSet.connect(currentId, ConstraintSet.START, transactionLayout.getId(), ConstraintSet.START, 2);
+            transactionLayoutSet.applyTo(transactionLayout);
+
+        }
+
 
     }
 }

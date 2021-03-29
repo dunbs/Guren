@@ -11,12 +11,12 @@ import androidx.constraintlayout.widget.ConstraintSet;
 
 public class GenerateFinanceView {
     public ConstraintLayout generateTransactionCard(Context context, String transactionTitleValue, String transactionAuthorValue, String transactionAmountValue) {
-        ConstraintLayout.LayoutParams commonParams = new ConstraintLayout.LayoutParams(
-                ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                ConstraintLayout.LayoutParams.WRAP_CONTENT
-        );
 
         ConstraintLayout cardLayout = new ConstraintLayout(context);
+        cardLayout.setLayoutParams(new ConstraintLayout.LayoutParams(
+                ConstraintLayout.LayoutParams.MATCH_PARENT,
+                ConstraintLayout.LayoutParams.WRAP_CONTENT
+        ));
 
         ConstraintSet cardLayoutSet = new ConstraintSet();
 
@@ -28,9 +28,9 @@ public class GenerateFinanceView {
         transactionAuthor.setId(transactionAuthor.generateViewId());
         transactionAmount.setId(transactionAmount.generateViewId());
 
-        transactionTitle.setLayoutParams(commonParams);
-        transactionAuthor.setLayoutParams(commonParams);
-        transactionAmount.setLayoutParams(commonParams);
+        transactionTitle.setLayoutParams(new ConstraintLayout.LayoutParams(-2, -2));
+        transactionAuthor.setLayoutParams(new ConstraintLayout.LayoutParams(-2, -2));
+        transactionAmount.setLayoutParams(new ConstraintLayout.LayoutParams(-2, -2));
 
         transactionTitle.setText(transactionTitleValue);
         transactionAuthor.setText(transactionAuthorValue);
@@ -38,21 +38,19 @@ public class GenerateFinanceView {
         
         cardLayout.addView(transactionTitle);
         cardLayout.addView(transactionAuthor);
-//        cardLayout.addView(transactionAmount);
+        cardLayout.addView(transactionAmount);
 
         cardLayoutSet.clone(cardLayout);
 
-        cardLayoutSet.connect(transactionTitle.getId(), ConstraintSet.START, cardLayout.getId(), ConstraintSet.START, 2);
-        cardLayoutSet.connect(transactionTitle.getId(), ConstraintSet.TOP, cardLayout.getId(), ConstraintSet.TOP, 3);
-//        cardLayoutSet.connect(transactionTitle.getId(), ConstraintSet.END, transactionAmount.getId(), ConstraintSet.START, 1);
+        cardLayoutSet.connect(transactionTitle.getId(), ConstraintSet.START, cardLayout.getId(), ConstraintSet.START);
+        cardLayoutSet.connect(transactionTitle.getId(), ConstraintSet.TOP, cardLayout.getId(), ConstraintSet.TOP);
 
-        cardLayoutSet.connect(transactionAuthor.getId(), ConstraintSet.START, cardLayout.getId(), ConstraintSet.START, 2);
-        cardLayoutSet.connect(transactionAuthor.getId(), ConstraintSet.TOP, transactionTitle.getId(), ConstraintSet.BOTTOM, 3);
-//        cardLayoutSet.connect(transactionAuthor.getId(), ConstraintSet.END, transactionAmount.getId(), ConstraintSet.START, 1);
+        cardLayoutSet.connect(transactionAuthor.getId(), ConstraintSet.START, cardLayout.getId(), ConstraintSet.START);
+        cardLayoutSet.connect(transactionAuthor.getId(), ConstraintSet.TOP, transactionTitle.getId(), ConstraintSet.BOTTOM);
 
-//        cardLayoutSet.connect(transactionAmount.getId(), ConstraintSet.TOP, cardLayout.getId(), ConstraintSet.TOP);
-//        cardLayoutSet.connect(transactionAmount.getId(), ConstraintSet.BOTTOM, cardLayout.getId(), ConstraintSet.BOTTOM);
 //        cardLayoutSet.connect(transactionAmount.getId(), ConstraintSet.END, cardLayout.getId(), ConstraintSet.END);
+        cardLayoutSet.connect(transactionAmount.getId(), ConstraintSet.TOP, transactionAuthor.getId(), ConstraintSet.BOTTOM);
+        cardLayoutSet.connect(transactionAmount.getId(), ConstraintSet.START, cardLayout.getId(), ConstraintSet.START);
 
         cardLayoutSet.applyTo(cardLayout);
 
