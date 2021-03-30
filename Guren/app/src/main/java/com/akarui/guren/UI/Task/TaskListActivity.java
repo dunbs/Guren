@@ -18,15 +18,6 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
     private void generateTaskCard() {
-        //Very demo, pls literally generate task card
-        TextView taskTitle, taskTime;
-
-        taskTitle = (TextView) findViewById(R.id.task_title);
-        taskTime = (TextView) findViewById(R.id.task_time);
-
-        taskTitle.setText("Sample Title");
-
-        taskTime.setText("Time: 12:00 - 15:00");
 
     }
 

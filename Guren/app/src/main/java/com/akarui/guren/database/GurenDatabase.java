@@ -37,7 +37,7 @@ import com.akarui.guren.database.entity.User;
                         RolePermission.class
                      },
           version = 1,
-          exportSchema = false)
+          exportSchema = true)
 @TypeConverters(Converter.class)
 public abstract class GurenDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "guren";
@@ -57,6 +57,7 @@ public abstract class GurenDatabase extends RoomDatabase {
         if (instance == null){
             instance = Room.databaseBuilder(applicationContext, GurenDatabase.class, DATABASE_NAME)
                     .allowMainThreadQueries()
+                    .createFromAsset("guren.db")
                     .build();
         }
         return instance;

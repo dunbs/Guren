@@ -13,9 +13,10 @@
         <activity android:name="com.akarui.guren.UI.Task.TaskListActivity" />
         <activity android:name="com.akarui.guren.UI.Main.MainActivity" />
         <activity android:name="com.akarui.guren.UI.Task.CalendarActivity">
+        </activity>
+        <activity android:name="com.akarui.guren.UI.Finance.FinanceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
