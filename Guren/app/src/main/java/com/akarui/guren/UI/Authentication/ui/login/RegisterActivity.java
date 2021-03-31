@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.akarui.guren.R;
+import com.akarui.guren.UI.Task.CalendarActivity;
 import com.akarui.guren.database.GurenDatabase;
 import com.akarui.guren.database.entity.Group;
 import com.akarui.guren.database.entity.User;
@@ -23,7 +24,6 @@ import com.akarui.guren.database.entity.User;
 import java.time.LocalDateTime;
 
 import UI.Authentication.data.LoginRepository;
-import UI.Task.AddTask;
 
 public class RegisterActivity extends AppCompatActivity {
     

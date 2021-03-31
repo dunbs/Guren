@@ -13,20 +13,18 @@
         <activity
             android:name="UI.Authentication.ui.login.LoginActivity"
             android:label="@string/title_activity_login">
-            <intent-filter>
+                        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="UI.Authentication.ui.login.RegisterActivity"/>
-        <activity android:name="UI.Task.AddTask" />
-        <activity android:name="UI.Task.TaskListActivity" />
-        <activity android:name="UI.Main.MainActivity" />
-        <activity android:name="UI.Task.CalendarActivity" />
-        <activity android:name="UI.Finance.FinanceActivity"></activity>
-
+        <activity android:name="com.akarui.guren.UI.Task.AddTaskActivity"></activity>
+        <activity android:name="com.akarui.guren.UI.Task.TaskListActivity" />
+        <activity android:name="com.akarui.guren.UI.Main.MainActivity" />
+        <activity android:name="com.akarui.guren.UI.Task.CalendarActivity">
         <receiver android:name=".service.JobBroadcastReceiver" />
+        <activity android:name="com.akarui.guren.UI.Finance.FinanceActivity"/>
     </application>
 
 </manifest>

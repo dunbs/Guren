@@ -1,4 +1,4 @@
-package UI.Main;
+package com.akarui.guren.UI.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -7,20 +7,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.akarui.guren.JobHandler;
 import com.akarui.guren.R;
+import com.akarui.guren.UI.Task.CalendarActivity;
 import com.akarui.guren.database.GurenDatabase;
-import com.akarui.guren.database.GurenDatabase_Impl;
 import com.akarui.guren.database.entity.Job;
-
-import java.time.LocalDateTime;
-
-import UI.Task.CalendarActivity;
 
 public class JobBroadcastReceiver extends BroadcastReceiver {
     @Override
