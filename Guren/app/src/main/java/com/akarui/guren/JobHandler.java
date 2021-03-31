@@ -4,7 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.akarui.guren.database.Converter;
 import com.akarui.guren.database.entity.Job;
@@ -19,10 +18,13 @@ public class JobHandler {
 //            {5, 4, 3, 2, 1};
     
     public static void createJobNotification(Job job, Context context){
-        LocalDateTime deadline = job.getDeadline();
+        LocalDateTime nextNotifyTime = LocalDateTime.now().isBefore(job.getStartDateTime())
+                ? job.getStartDateTime()
+                : job.getDeadline();
+        
         LocalDateTime now = LocalDateTime.now();
         
-        long minutes = now.until(deadline, ChronoUnit.MINUTES);
+        long minutes = now.until(nextNotifyTime, ChronoUnit.MINUTES);
         
         int index;
         for (index = 0; index < TIMES_BEFORE_DEADLINE_NOTIFICATION.length; index++){
@@ -50,9 +52,13 @@ public class JobHandler {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, JobBroadcastReceiver.class);
         intent.putExtra("JobId", job.getId());
-
+    
+        LocalDateTime nextNotifyTime = LocalDateTime.now().isBefore(job.getStartDateTime())
+                ? job.getStartDateTime()
+                : job.getDeadline();
+        
         PendingIntent deadlineIntent = PendingIntent.getBroadcast(context, job.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, Converter.ToTimeStamp(job.getDeadline().minus(duration)), deadlineIntent);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, Converter.ToTimeStamp(nextNotifyTime.minus(duration)), deadlineIntent);
     }
 
     public static void deleteJobNotification(Job job, Context context){

@@ -34,7 +34,7 @@
                 android:layout_width="120dp"
                 android:layout_height="45dp"
                 android:gravity="fill_vertical"
-                android:text="Assigned Name: "
+                android:text="Task Title: "
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -191,6 +191,38 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/task_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_priority">
+
+            <TextView
+                android:id="@+id/task_detail_label"
+                android:layout_width="120dp"
+                android:layout_height="45dp"
+                android:gravity="fill_vertical"
+                android:text="Task Details: "
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/task_detail_value"
+                android:layout_width="215dp"
+                android:layout_height="45dp"
+                android:singleLine="true"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/task_detail_label"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_button_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -199,9 +231,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/task_priority"
+            app:layout_constraintTop_toBottomOf="@+id/task_detail"
         >
             <Button
+                android:id="@+id/add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add"

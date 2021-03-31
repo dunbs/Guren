@@ -42,4 +42,14 @@ public interface JobDAO extends BaseDAO<Job> {
     
     @Query("SELECT * FROM job WHERE group_id = :groupId")
     List<Job> findJobsByGroup(int groupId);
+    
+    @Query("SELECT * FROM job " +
+            "WHERE group_id = :groupId " +
+            "   AND (job.startDateTime BETWEEN :from AND :to " +
+            "       OR job.deadline BETWEEN :from AND :to )")
+    List<Job> findJobsByGroupAndDays(int groupId, LocalDateTime from, LocalDateTime to);
+    
+    
+    @Query("SELECT * FROM job ORDER BY created_date DESC LIMIT 1")
+    Job findNewestAddedJob();
 }

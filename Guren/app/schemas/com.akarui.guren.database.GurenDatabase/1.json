@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b06be58ab7a6275721db4a7cdcfc3778",
+    "identityHash": "4c3c3ab1c7139283e16fa8836b0d3e52",
     "entities": [
       {
         "tableName": "user",
@@ -296,7 +296,7 @@
       },
       {
         "tableName": "job",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `group_id` INTEGER NOT NULL, `title` TEXT, `detail` TEXT, `creator_id` INTEGER NOT NULL, `state` INTEGER NOT NULL, `deadline` INTEGER, `priority` INTEGER NOT NULL, `created_date` INTEGER, `is_deleted` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `group_id` INTEGER NOT NULL, `title` TEXT, `detail` TEXT, `creator_id` INTEGER NOT NULL, `state` INTEGER NOT NULL, `startDateTime` INTEGER, `deadline` INTEGER, `priority` INTEGER NOT NULL, `created_date` INTEGER, `is_deleted` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -333,6 +333,12 @@
             "columnName": "state",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "startDateTime",
+            "columnName": "startDateTime",
+            "affinity": "INTEGER",
+            "notNull": false
           },
           {
             "fieldPath": "deadline",
@@ -587,7 +593,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b06be58ab7a6275721db4a7cdcfc3778')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4c3c3ab1c7139283e16fa8836b0d3e52')"
     ]
   }
 }

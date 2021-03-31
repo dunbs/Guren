@@ -17,6 +17,8 @@ import com.akarui.guren.UI.Task.CalendarActivity;
 import com.akarui.guren.database.GurenDatabase;
 import com.akarui.guren.database.entity.Job;
 
+import java.time.LocalDateTime;
+
 public class JobBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -31,11 +33,16 @@ public class JobBroadcastReceiver extends BroadcastReceiver {
         Intent jobActivityIntent = new Intent(context, CalendarActivity.class);
         jobActivityIntent.putExtra("JobId", job.getId());
 
+        LocalDateTime now = LocalDateTime.now();
+        String contentTitle = now.isBefore(job.getStartDateTime())
+                ? "A task is scheduled for you at " + job.getStartDateTime() + " !"
+                : "Your deadline(s) is near!";
+        
         PendingIntent deadlineIntent = PendingIntent.getActivity(context, job.getId(), jobActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(context, String.valueOf(job.getId()))
                         .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle("Your deadline is near!")
+                        .setContentTitle(contentTitle)
                         .setContentText(job.getTitle())
                         .setContentIntent(deadlineIntent)
                         .setPriority(NotificationCompat.PRIORITY_MAX)

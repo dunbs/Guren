@@ -22,7 +22,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.akarui.guren.R;
 import com.akarui.guren.UI.Authentication.data.LoginRepository;
-import com.akarui.guren.UI.Authentication.data.model.LoggedInUser;
 import com.akarui.guren.UI.Task.CalendarActivity;
 import com.akarui.guren.database.GurenDatabase;
 
@@ -79,11 +78,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
-                }
-                setResult(Activity.RESULT_OK);
+                    setResult(Activity.RESULT_OK);
     
-                //Complete and destroy login activity once successful
-                finish();
+                    //Complete and destroy login activity once successful
+                    finish();
+                }
             }
         });
         
