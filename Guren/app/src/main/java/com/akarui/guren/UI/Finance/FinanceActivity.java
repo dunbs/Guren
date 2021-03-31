@@ -59,7 +59,6 @@ public class FinanceActivity extends AppCompatActivity {
 
 
     private void insertTransactionData() {
-        System.out.println("Do things pls");
         GenerateFinanceView generateFinanceView = new GenerateFinanceView();
         List<Transaction> transactionList = GurenDatabase.getInstance(this).transactionDAO().loadTransactionsByGroupId(1);
 

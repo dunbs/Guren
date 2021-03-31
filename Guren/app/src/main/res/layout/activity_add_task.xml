@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.akarui.guren.UI.Task.AddTask"
+    tools:context="com.akarui.guren.UI.Task.AddTaskActivity"
 
     android:paddingTop="100dp"
 >
@@ -42,7 +42,7 @@
 
             <EditText
                 android:id="@+id/assigned_name_value"
-                android:layout_width="200dp"
+                android:layout_width="215dp"
                 android:layout_height="45dp"
                 android:singleLine="true"
 
@@ -75,14 +75,32 @@
 
 
             <EditText
-                android:id="@+id/task_from_value"
-                android:layout_width="200dp"
+                android:id="@+id/task_from_date_value"
+                android:layout_width="130dp"
                 android:layout_height="45dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false"
 
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/task_from_label"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/task_from_time_value"
             />
+
+            <EditText
+                android:id="@+id/task_from_time_value"
+                android:layout_width="70dp"
+                android:layout_height="45dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/task_from_date_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -106,15 +124,36 @@
                 />
 
 
+
             <EditText
-                android:id="@+id/task_to_value"
-                android:layout_width="200dp"
+                android:id="@+id/task_to_date_value"
+                android:layout_width="130dp"
                 android:layout_height="45dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false"
 
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/task_to_label"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/task_to_time_value"
                 />
+
+            <EditText
+
+                android:id="@+id/task_to_time_value"
+                android:layout_width="70dp"
+                android:layout_height="45dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/task_to_date_value"
+                app:layout_constraintEnd_toEndOf="parent"
+            />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
