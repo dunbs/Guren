@@ -1,5 +1,6 @@
-package UI.Authentication.ui.login;
+package com.akarui.guren.UI.Authentication.ui.login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.akarui.guren.UI.Authentication.data.LoginRepository;
 import com.akarui.guren.R;
 import com.akarui.guren.UI.Task.CalendarActivity;
 import com.akarui.guren.database.GurenDatabase;
@@ -22,8 +24,6 @@ import com.akarui.guren.database.entity.Group;
 import com.akarui.guren.database.entity.User;
 
 import java.time.LocalDateTime;
-
-import UI.Authentication.data.LoginRepository;
 
 public class RegisterActivity extends AppCompatActivity {
     
@@ -81,11 +81,13 @@ public class RegisterActivity extends AppCompatActivity {
                     group.setCreatedDate(LocalDateTime.now());
                     gurenDatabase.groupDAO().insertAll(group);
     
-                    LoginRepository.getInstance(null).login(user.getUsername(), user.getPassword());
+                    LoginRepository.getInstance().login(user.getUsername(), user.getPassword());
                     
                     Intent intent = new Intent(RegisterActivity.this, CalendarActivity.class);
                     startActivity(intent);
                     
+                    setResult(Activity.RESULT_OK);
+                    finish();
                 } catch (SQLiteConstraintException e){
                     Toast.makeText(RegisterActivity.this, "Username or email existed!", Toast.LENGTH_SHORT).show();
                 } catch (Exception e){

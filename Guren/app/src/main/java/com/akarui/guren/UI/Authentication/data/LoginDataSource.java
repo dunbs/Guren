@@ -1,10 +1,9 @@
-package UI.Authentication.data;
+package com.akarui.guren.UI.Authentication.data;
 
 import com.akarui.guren.database.GurenDatabase;
-import com.akarui.guren.database.GurenDatabase_Impl;
 import com.akarui.guren.database.entity.User;
 
-import UI.Authentication.data.model.LoggedInUser;
+import com.akarui.guren.UI.Authentication.data.model.LoggedInUser;
 
 import java.io.IOException;
 

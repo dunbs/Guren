@@ -1,18 +1,15 @@
-package UI.Authentication.ui.login;
+package com.akarui.guren.UI.Authentication.ui.login;
+
+import android.util.Patterns;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import android.util.Log;
-import android.util.Patterns;
-import android.widget.Toast;
-
 import com.akarui.guren.R;
-
-import UI.Authentication.data.LoginRepository;
-import UI.Authentication.data.Result;
-import UI.Authentication.data.model.LoggedInUser;
+import com.akarui.guren.UI.Authentication.data.LoginRepository;
+import com.akarui.guren.UI.Authentication.data.Result;
+import com.akarui.guren.UI.Authentication.data.model.LoggedInUser;
 
 public class LoginViewModel extends ViewModel {
     

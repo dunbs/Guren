@@ -1,11 +1,11 @@
-package UI.Authentication.ui.login;
+package com.akarui.guren.UI.Authentication.ui.login;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import UI.Authentication.data.LoginDataSource;
-import UI.Authentication.data.LoginRepository;
+import com.akarui.guren.UI.Authentication.data.LoginDataSource;
+import com.akarui.guren.UI.Authentication.data.LoginRepository;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

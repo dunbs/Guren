@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Guren">
 
         <activity
-            android:name="UI.Authentication.ui.login.LoginActivity"
+            android:name=".UI.Authentication.ui.login.LoginActivity"
             android:label="@string/title_activity_login">
                         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,12 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".UI.Authentication.ui.login.RegisterActivity" />
         <activity android:name="com.akarui.guren.UI.Task.AddTaskActivity"></activity>
         <activity android:name="com.akarui.guren.UI.Task.TaskListActivity" />
         <activity android:name="com.akarui.guren.UI.Main.MainActivity" />
-        <activity android:name="com.akarui.guren.UI.Task.CalendarActivity">
-        <receiver android:name=".service.JobBroadcastReceiver" />
+        <activity android:name="com.akarui.guren.UI.Task.CalendarActivity"/>
         <activity android:name="com.akarui.guren.UI.Finance.FinanceActivity"/>
+
+        <receiver android:name=".service.JobBroadcastReceiver" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package UI.Authentication.data.model;
+package com.akarui.guren.UI.Authentication.data.model;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

@@ -1,4 +1,4 @@
-package UI.Authentication.ui.login;
+package com.akarui.guren.UI.Authentication.ui.login;
 
 /**
  * Class exposing authenticated user details to the UI.

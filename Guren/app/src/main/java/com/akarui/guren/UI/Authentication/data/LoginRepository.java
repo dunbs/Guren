@@ -1,6 +1,6 @@
-package UI.Authentication.data;
+package com.akarui.guren.UI.Authentication.data;
 
-import UI.Authentication.data.model.LoggedInUser;
+import com.akarui.guren.UI.Authentication.data.model.LoggedInUser;
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -19,6 +19,14 @@ public class LoginRepository {
     // private constructor : singleton access
     private LoginRepository(LoginDataSource dataSource) {
         this.dataSource = dataSource;
+    }
+    
+    public static LoginRepository getInstance() {
+        if (instance == null) {
+            instance = new LoginRepository(new LoginDataSource());
+        }
+        
+        return instance;
     }
     
     public static LoginRepository getInstance(LoginDataSource dataSource) {
@@ -45,6 +53,10 @@ public class LoginRepository {
         this.user = user;
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
+    }
+    
+    public LoggedInUser getLoggedInUser(){
+        return this.user;
     }
     
     public Result<LoggedInUser> login(String username, String password) {

@@ -1,4 +1,4 @@
-package UI.Authentication.ui.login;
+package com.akarui.guren.UI.Authentication.ui.login;
 
 import androidx.annotation.Nullable;
 
