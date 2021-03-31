@@ -9,19 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Guren">
-        <activity android:name="UI.Task.AddTask"></activity>
-        <activity android:name="UI.Task.TaskListActivity" />
-        <activity android:name="UI.Main.MainActivity" />
-        <activity android:name="UI.Task.CalendarActivity">
-        </activity>
-        <activity android:name="UI.Finance.FinanceActivity">
+
+        <activity
+            android:name="UI.Authentication.ui.login.LoginActivity"
+            android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="UI.Authentication.ui.login.RegisterActivity"/>
+        <activity android:name="UI.Task.AddTask" />
+        <activity android:name="UI.Task.TaskListActivity" />
+        <activity android:name="UI.Main.MainActivity" />
+        <activity android:name="UI.Task.CalendarActivity" />
+        <activity android:name="UI.Finance.FinanceActivity"></activity>
 
-        <receiver android:name="com.akarui.guren.service.JobBroadcastReceiver" />
+        <receiver android:name=".service.JobBroadcastReceiver" />
     </application>
 
 </manifest>

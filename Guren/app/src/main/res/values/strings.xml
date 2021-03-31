@@ -2,4 +2,14 @@
     <string name="app_name">Guren</string>
     <string name="notification_channel">Guren Deadline Notification</string>
     <string name="notification_channel_description">Deadline is near!</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_register">Register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password cannot be empty</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>
