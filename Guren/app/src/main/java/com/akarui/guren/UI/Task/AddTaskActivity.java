@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.akarui.guren.R;
@@ -107,7 +108,6 @@ public class AddTaskActivity extends AppCompatActivity {
         });
     }
 
-    private void addChangeTimeListener(int editTextId) {
-
+    private void addChangeTimeListener(int assignedNameId, int fromDateTimeId, int toDateTimeId, int priorityId) {
     }
 }
