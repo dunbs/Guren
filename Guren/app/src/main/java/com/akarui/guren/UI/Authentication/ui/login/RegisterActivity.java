@@ -84,6 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                     LoginRepository.getInstance().login(user.getUsername(), user.getPassword());
                     
                     Intent intent = new Intent(RegisterActivity.this, CalendarActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     
                     setResult(Activity.RESULT_OK);
