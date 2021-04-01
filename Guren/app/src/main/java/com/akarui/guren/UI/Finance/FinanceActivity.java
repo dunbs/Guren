@@ -5,13 +5,16 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
 import com.akarui.guren.R;
+import com.akarui.guren.UI.Task.CalendarActivity;
 import com.akarui.guren.database.GurenDatabase;
 import com.akarui.guren.database.entity.Transaction;
 import com.akarui.guren.utils.generateViews.GenerateFinanceView;
@@ -23,6 +26,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.w3c.dom.Text;
 
@@ -39,6 +43,15 @@ public class FinanceActivity extends AppCompatActivity {
 
         insertChartData();
         insertTransactionData();
+        changeView();
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab_finance);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FinanceActivity.this, AddFinanceActivity.class));
+            }
+        });
     }
 
     private void insertChartData() {
@@ -54,6 +67,24 @@ public class FinanceActivity extends AppCompatActivity {
 
         financeChart.setData(barData);
         financeChart.invalidate();
+    }
+    private void changeView() {
+        Button taskBtn = findViewById(R.id.task_view_btn);
+        Button financeBtn = findViewById(R.id.finance_view_btn);
+
+        taskBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FinanceActivity.this, CalendarActivity.class));
+            }
+        });
+
+        financeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FinanceActivity.this, FinanceActivity.class));
+            }
+        });
     }
 
 

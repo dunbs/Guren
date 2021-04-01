@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/guren_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Guren">
-
+        <activity android:name=".UI.Finance.AddFinanceActivity"></activity>
         <activity android:name=".UI.Authentication.ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,11 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".UI.Authentication.ui.login.RegisterActivity" />
-        <activity android:name="com.akarui.guren.UI.Task.AddTaskActivity"></activity>
-        <activity android:name="com.akarui.guren.UI.Task.TaskListActivity" />
-        <activity android:name="com.akarui.guren.UI.Main.MainActivity" />
-        <activity android:name="com.akarui.guren.UI.Task.CalendarActivity"/>
-        <activity android:name="com.akarui.guren.UI.Finance.FinanceActivity"/>
+        <activity android:name=".UI.Task.AddTaskActivity" />
+        <activity android:name=".UI.Task.TaskListActivity" />
+        <activity android:name=".UI.Main.MainActivity" />
+        <activity android:name=".UI.Task.CalendarActivity" />
+        <activity android:name=".UI.Finance.FinanceActivity" />
 
         <receiver android:name=".service.JobBroadcastReceiver" />
     </application>
