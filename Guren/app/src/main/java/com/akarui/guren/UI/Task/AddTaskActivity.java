@@ -7,22 +7,30 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.akarui.guren.JobHandler;
 import com.akarui.guren.R;
+import com.akarui.guren.UI.Authentication.data.LoginRepository;
 import com.akarui.guren.database.GurenDatabase;
 import com.akarui.guren.database.entity.Job;
+import com.akarui.guren.database.entity.JobAssignee;
 
 import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Locale;
+
+import lombok.var;
 
 public class AddTaskActivity extends AppCompatActivity {
 
@@ -37,11 +45,51 @@ public class AddTaskActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         renderDatePicker();
+
+        var addTaskButton = (Button)findViewById(R.id.add_button);
+        addTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addTask();
+            }
+        });
     }
 
     private void addTask() {
+        var fromDate = (EditText)findViewById(R.id.task_from_date_value);
+        var toDate = (EditText)findViewById(R.id.task_to_date_value);
+        var fromTime = (EditText)findViewById(R.id.task_from_time_value);
+        var toTime = (EditText)findViewById(R.id.task_to_time_value);
+        var title = (EditText)findViewById(R.id.assigned_name_value);
+        var details = (EditText)findViewById(R.id.task_detail_value);
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        LocalDateTime fromDateTime = LocalDateTime.parse(fromDate.getText().toString() + " " + fromTime.getText().toString(), dateTimeFormatter);
+        LocalDateTime toDateTime = LocalDateTime.parse(toDate.getText().toString() + " " + toTime.getText().toString(), dateTimeFormatter);
+
+        var gurenDb = GurenDatabase.getInstance(getApplicationContext());
+
         Job job = new Job();
-        GurenDatabase.getInstance(getApplicationContext()).jobDAO().insertAll(new Job());
+        job.setCreatedDate(LocalDateTime.now());
+        job.setCreatorId(LoginRepository.getInstance().getLoggedInUser().getUserId());
+        job.setGroupId(gurenDb.groupDAO().loadSingleUserGroup(job.getCreatorId()).getId());
+        job.setTitle(title.getText().toString());
+        job.setDetail(details.getText().toString());
+        job.setStartDateTime(fromDateTime);
+        job.setDeadline(toDateTime);
+
+        gurenDb.jobDAO().insertAll(job);
+
+        job = gurenDb.jobDAO().findNewestAddedJob();
+        JobHandler.createJobNotification(job, this);
+
+        JobAssignee jobAssignee = new JobAssignee();
+        jobAssignee.setAssignerId(job.getCreatorId());
+        jobAssignee.setJobId(job.getId());
+        jobAssignee.setUserId(job.getCreatorId());
+        jobAssignee.setCreatedDate(LocalDateTime.now());
+
+        gurenDb.jobAssigneeDAO().insertAll(jobAssignee);
     }
 
     private void renderDatePicker() {
@@ -106,7 +154,7 @@ public class AddTaskActivity extends AppCompatActivity {
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
 
-                            timeText.setText(hourOfDay + ":" + minute);
+                            timeText.setText(String.format("%02d:%02d", hourOfDay, minute) );
                         }
                     }, mHour, mMinute, false);
                 timePickerDialog.show();

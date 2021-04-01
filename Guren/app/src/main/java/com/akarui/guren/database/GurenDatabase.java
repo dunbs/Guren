@@ -1,6 +1,5 @@
 package com.akarui.guren.database;
 
-import android.app.Application;
 import android.content.Context;
 
 import androidx.room.Database;
@@ -57,7 +56,7 @@ public abstract class GurenDatabase extends RoomDatabase {
         if (instance == null){
             instance = Room.databaseBuilder(applicationContext, GurenDatabase.class, DATABASE_NAME)
                     .allowMainThreadQueries()
-                    .createFromAsset("guren.db")
+//                    .createFromAsset("guren.db")
                     .build();
         }
         return instance;

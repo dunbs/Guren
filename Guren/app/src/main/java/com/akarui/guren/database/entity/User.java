@@ -1,6 +1,5 @@
 package com.akarui.guren.database.entity;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
@@ -11,7 +10,7 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 @Entity(tableName = "user",
-        indices = {@Index(value = {"username"}, unique = true)}
+        indices = {@Index(value = {"username"}, unique = true), @Index(value = {"email"}, unique = true)}
 )
 @Data
 public class User {
